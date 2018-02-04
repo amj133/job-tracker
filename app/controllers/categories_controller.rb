@@ -9,11 +9,17 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.create(category_params)
+    @category = Category.new(category_params)
+    if @category.save
+      flash[:success] = "#{@category.title} added!"
+      redirect_to categories_path
+    else
+      render :new
+    end
 
-    flash.notice = "Category '#{@category.title}' Created!"
+    # flash.notice = "Category '#{@category.title}' Created!"
 
-    redirect_to categories_path
+    # redirect_to categories_path
   end
 
   private
