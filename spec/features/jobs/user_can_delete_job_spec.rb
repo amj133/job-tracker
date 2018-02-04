@@ -12,6 +12,7 @@ describe "user can delete a job" do
     expect(current_path).to eq(company_jobs_path(company))
     expect(page).to_not have_content('developer')
     expect(page).to have_content("monkey trainer")
+    expect(company.jobs.count).to eq(1)
   end
 
   # add scenario for deleting from jobs index page
