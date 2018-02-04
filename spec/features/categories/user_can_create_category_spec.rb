@@ -6,11 +6,11 @@ describe "User can create new category" do
       visit new_category_path
 
       fill_in('Title', with: "High paying")
-      click_on('submit')
+      click_on('Create Category')
 
       expect(current_path).to eq(categories_path)
       expect(page).to have_content('High paying')
       expect(Category.all.count).to eq(1)
-    end 
+    end
   end
 end
