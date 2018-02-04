@@ -15,5 +15,17 @@ describe "user can delete a job" do
     expect(company.jobs.count).to eq(1)
   end
 
-  # add scenario for deleting from jobs index page
+  scenario "they visit company jobs page" do
+    company = Company.create!(name: "Lockheed")
+    job_1 = company.jobs.create!(title: "developer", level_of_interest: 85, city: "Denver")
+    job_2 = company.jobs.create!(title: "monkey trainer", level_of_interest: 99, city: "Boston")
+
+    visit company_jobs_path(company)
+    click_on('Delete', match: :first)
+
+    expect(current_path).to eq(company_jobs_path(company))
+    expect(page).to_not have_content('developer')
+    expect(page).to have_content("monkey trainer")
+    expect(company.jobs.count).to eq(1)
+  end
 end
