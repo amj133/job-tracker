@@ -1,3 +1,5 @@
+require 'pry'
+
 class JobsController < ApplicationController
   # before_action :set_job, only: [:show, :destroy, :edit, :update]
 
@@ -23,6 +25,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
   end
 
@@ -44,7 +47,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job.destroy
 
-    redirect_to company_jobs_path(@company)
+    redirect_to company_jobs_path
   end
 
   private
