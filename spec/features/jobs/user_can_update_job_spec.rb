@@ -13,5 +13,6 @@ describe "User can update a job" do
 
     expect(current_path).to eq(company_jobs_path(company))
     expect(page).to have_content('Manager')
+    expect(company.jobs.first.title).to eq('Manager')
   end
 end
