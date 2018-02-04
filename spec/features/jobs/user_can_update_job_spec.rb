@@ -8,7 +8,7 @@ describe "User can update a job" do
     visit company_jobs_path(company)
     click_link('Edit')
     fill_in('Title', with: 'Manager')
-    fill_in('Level of interest', with: 93)
+    fill_in('Level of interest', with: 94)
     click_on('Update Job')
 
     expect(current_path).to eq(company_jobs_path(company))
