@@ -14,12 +14,8 @@ class CategoriesController < ApplicationController
       flash[:success] = "#{@category.title} added!"
       redirect_to categories_path
     else
-      render :new
+      redirect_to new_category_path
     end
-
-    # flash.notice = "Category '#{@category.title}' Created!"
-
-    # redirect_to categories_path
   end
 
   private
