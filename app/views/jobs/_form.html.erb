@@ -15,8 +15,7 @@
   <%= select(:job, :category_id, options_for_select(
       @categories.map do |category|
         [category.title, category.id]
-      end
-      )) %>
+      end)) %>
 
   <%= f.submit %>
 <% end %>
