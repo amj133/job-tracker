@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Job do
+describe Job, type: :model do
   describe "validations" do
     context "invalid attributes" do
       it "is invalid without a title" do
@@ -65,6 +65,6 @@ describe Job do
 
   describe "relationships" do
     it { should belong_to(:company) }
-    it { should belong_to(:category)}
+    it { should belong_to(:category) }
   end
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "User can update a job" do
-  scenario "they are linked from job index to edit page" do
+  xit "they are linked from job index to edit page" do
     company = Company.create!(name: "Lockheed")
     job = company.jobs.create!(title: "developer", level_of_interest: 85, city: "Denver")
 
