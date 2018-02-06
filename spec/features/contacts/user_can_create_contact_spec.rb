@@ -5,7 +5,7 @@ describe "user can create new contact" do
     it "can create new contact from company page" do
       company = Company.create!(name: "Walden")
 
-      visits company_path(company)
+      visit company_path(company)
       fill_in('contact[full_name]', with: "Johnny Moneymaker")
       fill_in('contact[position]', with: "BAMF")
       fill_in('contact[email]', with: "ilikefrogs@gmail.com")
