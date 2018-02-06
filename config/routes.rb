@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
 
-  resources :companies do
-    resources :jobs do
-      resources :comments
-    end
+  # resources :companies do
+  #   resources :jobs do
+  #     resources :comments
+  #   end
+  # end
+
+  resources :companies, shallow: true do
+    resources :jobs
+  end
+
+  resources :jobs, only: [:show, :edit, :update, :destroy] do
+    resources :comments, only: [:create, :new]
   end
 
   resources :categories

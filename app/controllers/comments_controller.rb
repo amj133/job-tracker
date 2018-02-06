@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment.job_id = params[:job_id]
     @comment.save
 
-    redirect_to company_job_path(@comment.job.company, @comment.job)
+    redirect_to job_path(@comment.job)
   end
 
   private

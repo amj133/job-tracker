@@ -13,7 +13,7 @@ describe "user can delete a job" do
                                  city: "Boston",
                                  category_id: category.id)
 
-    visit company_job_path(company, job_1)
+    visit job_path(job_1)
     click_on('Delete')
 
     expect(current_path).to eq(company_jobs_path(company))
@@ -41,5 +41,22 @@ describe "user can delete a job" do
     expect(page).to_not have_content('developer')
     expect(page).to have_content("monkey trainer")
     expect(company.jobs.count).to eq(1)
+  end
+
+  scenario "delete a job that has comments" do
+    company = Company.create!(name: "Lockheed")
+    category = Category.create!(title: "blue")
+    job_1 = company.jobs.create!(title: "developer",
+                                 level_of_interest: 85,
+                                 city: "Denver",
+                                 category_id: category.id)
+    job_1.comments.create!(body: "this is a comment")
+    job_1.comments.create!(body: "this is ALSO a comment!!!")
+
+    visit company_jobs_path(company)
+    click_on('Delete', match: :first)
+
+    expect(page).to_not have_content('developer')
+    expect(company.jobs.count).to eq(0)
   end
 end
