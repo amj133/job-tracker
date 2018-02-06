@@ -18,10 +18,10 @@ describe "user can create new contact" do
       fill_in('contact[position]', with: "BAMF")
       fill_in('contact[email]', with: "ilikefrogs@gmail.com")
       click_on('Create Contact')
-      save_and_open_page
-
+      
       expect(current_path).to eq(company_jobs_path(company))
       expect(page).to have_content("Contacts:")
+      expect(page).to have_content("Sally Blue - Manager")
       expect(page).to have_content("Johnny Moneymaker - BAMF")
     end
   end
