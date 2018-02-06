@@ -55,6 +55,7 @@ class JobsController < ApplicationController
     # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @company = @job.company
+    # @job.comments.destroy
     @job.destroy
 
     redirect_to company_jobs_path(@company)
