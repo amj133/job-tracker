@@ -8,6 +8,8 @@ describe "User sees a specific job" do
                                level_of_interest: 70,
                                city: "Denver",
                                category_id: category.id)
+    comment_1 = job.comments.create!(body: "The HR manager is Mr. Smith, I plan to contact them next tuesday 3/5.")
+    comment_2 = job.comments.create!(body: "Contacted Mr. Smith on 3/5, he said they are not actively seeking a developer but will keep my info on file.")
 
     visit company_job_path(company, job)
 
