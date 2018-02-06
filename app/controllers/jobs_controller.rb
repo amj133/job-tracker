@@ -11,7 +11,7 @@ class JobsController < ApplicationController
   def new
     @categories = Category.all
     @company = Company.find(params[:company_id])
-    @job = Job.new()
+    @jobs = Job.new()
   end
 
   def create
@@ -21,14 +21,14 @@ class JobsController < ApplicationController
     if @job.save
       @category.jobs.push(@job)
       flash[:success] = "You created #{@job.title} at #{@company.name}"
-      redirect_to company_job_path(@company, @job)
+      redirect_to job_path(@job)
     else
       render :new
     end
   end
 
   def show
-    @company = Company.find(params[:company_id])
+    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @category = @job.category
     @comment = Comment.new
@@ -36,25 +36,28 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:company_id])
+    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
+    @company = @job.company
     @categories = Category.all
   end
 
   def update
-    @company = Company.find(params[:company_id])
+    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
+    @company = @job.company
     @job.update(job_params)
 
     redirect_to company_jobs_path(@company)
   end
 
   def destroy
-    @company = Company.find(params[:company_id])
+    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
+    @company = @job.company
     @job.destroy
 
-    redirect_to company_jobs_path
+    redirect_to company_jobs_path(@company)
   end
 
   private

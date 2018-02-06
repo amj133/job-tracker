@@ -15,7 +15,7 @@ City: <%= @job.city %>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
 
-<%= link_to "Delete", company_job_path(@company, @job), method: :delete, data: {confirm: "Really delete the job?"} %>
+<%= link_to "Delete", job_path(@job), method: :delete, data: {confirm: "Really delete the job?"} %>
 
 <h3>Comments</h3>
 <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>

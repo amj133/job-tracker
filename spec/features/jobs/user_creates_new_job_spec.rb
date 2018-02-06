@@ -13,7 +13,7 @@ describe "User creates a new job" do
     select('blue', :from => 'job[category_id]')
     click_button("Create")
 
-    expect(current_path).to eq("/companies/#{company.id}/jobs/#{Job.last.id}")
+    expect(current_path).to eq("/jobs/#{Job.last.id}")
     expect(page).to have_content("Company: ESPN")
     expect(page).to have_content("Title: Developer")
     expect(page).to have_content("Level of Interest: 80")
