@@ -7,10 +7,12 @@ class JobsController < ApplicationController
     if params[:company_id].nil? && params[:sort] == "location"
       @jobs = Job.location_sort
       render :index_by_location
+    elsif params[:company_id].nil? && params[:sort] == "interest"
+      @jobs = Job.sort_by_interest
+      render :index_by_interest
     else
       @company = Company.find(params[:company_id])
       @jobs = @company.jobs
-      # @contact = Contact.new
       @contact = @company.contacts.new
     end
   end
@@ -35,7 +37,6 @@ class JobsController < ApplicationController
   end
 
   def show
-    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @category = @job.category
     @comment = Comment.new
@@ -43,14 +44,12 @@ class JobsController < ApplicationController
   end
 
   def edit
-    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @company = @job.company
     @categories = Category.all
   end
 
   def update
-    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @company = @job.company
     @job.update(job_params)
@@ -59,10 +58,8 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @company = @job.company
-    # @job.comments.destroy
     @job.destroy
 
     redirect_to company_jobs_path(@company)
