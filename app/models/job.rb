@@ -26,4 +26,8 @@ class Job < ApplicationRecord
     select("jobs.*")
       .order(level_of_interest: :desc)
   end
+
+  def self.find_by_location(location)
+
+  end
 end

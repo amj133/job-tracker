@@ -192,5 +192,34 @@ describe Job, type: :model do
 
       expect(jobs_by_interest).to eq([job_1, job_4, job_2, job_3])
     end
+
+    it "#find_by_location returns jobs for given location" do
+      company_1 = Company.create!(name: "ESPN")
+      category = Category.create!(title: "blue")
+      job_1 = Job.create!(title: "Designer",
+                          level_of_interest: 80,
+                          city: "Richmond",
+                          category_id: category.id,
+                          company_id: company_2.id)
+      job_2 = Job.create!(title: "Manager",
+                          level_of_interest: 70,
+                          city: "Denver",
+                          category_id: category.id,
+                          company_id: company_1.id)
+      job_3 = Job.create!(title: "Developer",
+                          level_of_interest: 60,
+                          city: "Richmond",
+                          category_id: category.id,
+                          company_id: company_1.id)
+      job_4 = Job.create!(title: "Communicator",
+                          level_of_interest: 75,
+                          city: "Denver",
+                          category_id: category.id,
+                          company_id: company_1.id)
+
+      denver_jobs = Job.find_by_location("Denver")
+
+      expect(denver_jobs).to eq([job_2, job_4])
+    end
   end
 end

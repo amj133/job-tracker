@@ -15,5 +15,6 @@
 <h4>Job Count by Location</h4>
 <p>Location : Number of Jobs </p>
 <% @job_count_by_location.each do |location, job_count| %>
-  <%= "#{location} : #{job_count}" %><br>
+  <%= link_to location, "/jobs?location=#{location}" %>
+  <%= ": #{job_count}" %><br>
 <% end %>
