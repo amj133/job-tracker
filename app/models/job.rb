@@ -3,4 +3,8 @@ class Job < ApplicationRecord
   belongs_to :company
   belongs_to :category
   has_many :comments, dependent: :delete_all
+
+  def self.location_sort
+    select(:title, :city).order(:city)
+  end
 end

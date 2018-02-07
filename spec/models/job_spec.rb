@@ -68,4 +68,39 @@ describe Job, type: :model do
     it { should belong_to(:category) }
     it { should have_many(:comments) }
   end
+
+  describe "class methods" do
+    it "#location_sort will sort jobs by location" do
+      company_1 = Company.create!(name: "ESPN")
+      company_2 = Company.create!(name: "ABC")
+      category = Category.create!(title: "blue")
+      job_1 = Job.create!(title: "Designer",
+                          level_of_interest: 80,
+                          city: "Richmond",
+                          category_id: category.id,
+                          company_id: company_2.id)
+      job_2 = Job.create!(title: "Manager",
+                          level_of_interest: 70,
+                          city: "Albany",
+                          category_id: category.id,
+                          company_id: company_1.id)
+      job_3 = Job.create!(title: "Developer",
+                          level_of_interest: 60,
+                          city: "Denver",
+                          category_id: category.id,
+                          company_id: company_1.id)
+      job_4 = Job.create!(title: "Communicator",
+                          level_of_interest: 70,
+                          city: "Denver",
+                          category_id: category.id,
+                          company_id: company_1.id)
+
+      sorted_jobs = Job.location_sort
+
+      expect(sorted_jobs.first.city).to eq("Albany")
+      expect(sorted_jobs.first.title).to eq("Manager")
+      expect(sorted_jobs.last.city).to eq("Richmond")
+      expect(sorted_jobs.last.title).to eq("Designer")
+    end
+  end
 end
