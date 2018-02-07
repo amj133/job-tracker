@@ -11,3 +11,9 @@
 <% @top_3_by_avg_interest.each do |company, level_of_interest| %>
   <%= "#{company.name} : #{level_of_interest.round}" %><br>
 <% end %>
+
+<h4>Job Count by Location</h4>
+<p>Location : Number of Jobs </p>
+<% @job_count_by_location.each do |location, job_count| %>
+  <%= "#{location} : #{job_count}" %><br>
+<% end %>
