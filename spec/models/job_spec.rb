@@ -132,5 +132,6 @@ describe Job, type: :model do
 
       expect(job_count_by_interest).to eq({80 => 1, 70 => 2, 60 => 1})
     end
+
   end
 end
