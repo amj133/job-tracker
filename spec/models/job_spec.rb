@@ -162,5 +162,35 @@ describe Job, type: :model do
 
       expect(job_count_by_location).to eq({"Denver" => 3, "Richmond" => 1})
     end
+
+    it "#sort_by_interest returns jobs sorted by level of interst" do
+      company_1 = Company.create!(name: "ESPN")
+      company_2 = Company.create!(name: "ABC")
+      category = Category.create!(title: "blue")
+      job_1 = Job.create!(title: "Designer",
+                          level_of_interest: 80,
+                          city: "Richmond",
+                          category_id: category.id,
+                          company_id: company_2.id)
+      job_2 = Job.create!(title: "Manager",
+                          level_of_interest: 70,
+                          city: "Denver",
+                          category_id: category.id,
+                          company_id: company_1.id)
+      job_3 = Job.create!(title: "Developer",
+                          level_of_interest: 60,
+                          city: "Denver",
+                          category_id: category.id,
+                          company_id: company_1.id)
+      job_4 = Job.create!(title: "Communicator",
+                          level_of_interest: 75,
+                          city: "Denver",
+                          category_id: category.id,
+                          company_id: company_1.id)
+
+      jobs_by_interest = Job.sort_by_interest
+
+      expect(jobs_by_interest).to eq([job_1, job_4, job_2, job_3])
+    end
   end
 end
