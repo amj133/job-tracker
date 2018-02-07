@@ -5,7 +5,7 @@ class JobsController < ApplicationController
 
   def index
     if params[:company_id].nil?
-      @jobs = Jobs.all
+      @jobs = Job.all
       render :index_by_location
     else
       @company = Company.find(params[:company_id])

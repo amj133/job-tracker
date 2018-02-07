@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "user sees all jobs for a given location" do
   context "user visits /jobs page" do
-    it "user can filter jobs by location" do
+    xit "user can filter jobs by location" do
       company_1 = Company.create!(name: "ESPN")
       company_2 = Company.create!(name: "ABC")
       category = Category.create!(title: "blue")
