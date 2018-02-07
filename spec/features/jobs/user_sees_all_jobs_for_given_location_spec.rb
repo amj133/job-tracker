@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "user sees all jobs for a given location" do
   context "user visits /jobs page" do
-    xit "user can filter jobs by location" do
+    it "user can filter jobs by location" do
       company_1 = Company.create!(name: "ESPN")
       company_2 = Company.create!(name: "ABC")
       category = Category.create!(title: "blue")
@@ -23,10 +23,10 @@ describe "user sees all jobs for a given location" do
                                    company_id: company_2.id)
 
       visit '/jobs?sort=location'
-      save_and_open_page
 
-      expect(page).to have_content("Denver:\nDeveloper\nManager")
-      expect(page).to have_content("Richmond:\nDesigner")
+      expect(page).to have_content("Developer - Denver")
+      expect(page).to have_content("Manager - Denver")
+      expect(page).to have_content("Designer - Richmond")
     end
   end
 end

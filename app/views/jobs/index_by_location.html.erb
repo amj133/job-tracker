@@ -1,1 +1,7 @@
-<h3>THis is a test</h3>
+<h3>Jobs By Location</h3>
+
+<% @jobs.each do |job| %>
+  <ul>
+    <li><%= "#{job.title} - #{job.city}" %></li>
+  </ul>
+<% end %>
