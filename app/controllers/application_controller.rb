@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def dashboard
-
+    @job_count_by_interest = Job.count_by_interest
   end
 end

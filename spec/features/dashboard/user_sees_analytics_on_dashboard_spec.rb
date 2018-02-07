@@ -28,8 +28,7 @@ describe "user sees analytics on dashboard" do
                           company_id: company_1.id)
 
       visit '/dashboard'
-
-      expect(page).to eq({80 => 1, 70 => 2, 60 => 1})
+      save_and_open_page
       expect(page).to have_content("Level of Interest : Number of Jobs")
       expect(page).to have_content("80 : 1")
       expect(page).to have_content("70 : 2")
