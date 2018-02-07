@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  # resources :companies do
-  #   resources :jobs do
-  #     resources :comments
-  #   end
-  # end
-
   resources :companies, shallow: true do
     resources :jobs
     resources :contacts
@@ -17,8 +11,7 @@ Rails.application.routes.draw do
 
   resources :categories
 
-
-get '/dashboard' => 'application#dashboard'
+  get '/dashboard' => 'application#dashboard'
 # get '/dashboard', to: 'application#dashboard', as: :dashboard
 
 
