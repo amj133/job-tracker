@@ -21,4 +21,14 @@ class Job < ApplicationRecord
       .group(:city)
       .count
   end
+
+  def self.sort_by_interest
+    select("jobs.*")
+      .order(level_of_interest: :desc)
+  end
+
+  def self.find_by_location(location)
+    select("jobs.*")
+      .where(city: location)
+  end
 end
