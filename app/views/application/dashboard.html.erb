@@ -7,3 +7,7 @@
 <% end %>
 
 <h4>Top 3 Companies by Average Level of Interest</h4>
+<p>Company : Level of Interest </p>
+<% @top_3_by_avg_interest.each do |company, level_of_interest| %>
+  <%= "#{company.name} : #{level_of_interest.round}" %><br>
+<% end %>

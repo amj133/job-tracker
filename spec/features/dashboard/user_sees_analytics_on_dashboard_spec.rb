@@ -35,7 +35,7 @@ describe "user sees analytics on dashboard" do
       expect(page).to have_content("60 : 1")
     end
 
-    xit "displays top 3 companies by avg level of interest" do
+    it "displays top 3 companies by avg level of interest" do
       company_1 = Company.create!(name: "ESPN")
       company_2 = Company.create!(name: "ABC")
       company_3 = Company.create!(name: "CBS")
@@ -65,9 +65,9 @@ describe "user sees analytics on dashboard" do
       visit '/dashboard'
 
       expect(page).to have_content("Top 3 Companies by Average Level of Interest")
-      expect(page).to have_content("ESPN: 80")
-      expect(page).to have_content("NBC: 70")
-      expect(page).to have_content("CBS: 60")
+      expect(page).to have_content("ESPN : 80")
+      expect(page).to have_content("NBC : 70")
+      expect(page).to have_content("CBS : 60")
     end
   end
 end
