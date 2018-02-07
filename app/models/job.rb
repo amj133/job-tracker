@@ -28,6 +28,7 @@ class Job < ApplicationRecord
   end
 
   def self.find_by_location(location)
-
+    select("jobs.*")
+      .where(city: location)
   end
 end

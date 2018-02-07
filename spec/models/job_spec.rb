@@ -200,7 +200,7 @@ describe Job, type: :model do
                           level_of_interest: 80,
                           city: "Richmond",
                           category_id: category.id,
-                          company_id: company_2.id)
+                          company_id: company_1.id)
       job_2 = Job.create!(title: "Manager",
                           level_of_interest: 70,
                           city: "Denver",

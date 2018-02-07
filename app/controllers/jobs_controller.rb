@@ -12,6 +12,8 @@ class JobsController < ApplicationController
       @jobs = Job.sort_by_interest
       render :index_by_interest
     elsif params[:company_id].nil? && params[:location]
+      @jobs = Job.find_by_location(params[:location])
+      render :jobs_by_location
     else
       @company = Company.find(params[:company_id])
       @jobs = @company.jobs

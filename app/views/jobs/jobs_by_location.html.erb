@@ -1,0 +1,7 @@
+<h3>Jobs in <%= @jobs.first.city %></h3>
+
+<% @jobs.each do |job| %>
+  <ul>
+    <li><%= "#{job.title}: #{job.company.name}" %></li><br>
+  </ul>
+<% end %>
