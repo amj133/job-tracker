@@ -1,7 +1,9 @@
-<h1>Job Analytics</h1>
+<h2>Job Analytics</h1>
 
-<h2>Job Count by Level of Interest</h2>
+<h4>Job Count by Level of Interest</h2>
 <p>Level of Interest : Number of Jobs </p>
 <% @job_count_by_interest.each do |level_of_interest, job_count| %>
   <%= "#{level_of_interest} : #{job_count}" %><br>
 <% end %>
+
+<h4>Top 3 Companies by Average Level of Interest</h4>
