@@ -33,7 +33,7 @@ describe Company do
   end
 
   describe "class methods" do
-    it "#average_level_of_interest returns ordered list of each company's average" do
+    it "#average_level_of_interest returns hash of each company's average" do
       company_1 = Company.create!(name: "ESPN")
       company_2 = Company.create!(name: "ABC")
       category = Category.create!(title: "blue")
@@ -58,9 +58,9 @@ describe Company do
                           category_id: category.id,
                           company_id: company_1.id)
 
-      sorted_by_average_interest = Company.avereage_level_of_interest
+      average_interest = Company.average_level_of_interest
 
-      expect(sorted_by_average_interest).to eq(company_1 => 65, company_2 => 75)
+      expect(average_interest).to eq(company_1 => 65, company_2 => 75)
     end
   end
 end
