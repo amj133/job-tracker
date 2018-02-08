@@ -1,0 +1,13 @@
+<div class='job'>
+  <h3>Jobs Sorted By Location</h3>
+  <div style="width: 200px;">
+    <h6>(to create a new job go to the company of interest first OR create a new company then add a job!)</h6>
+  </div>
+  <ul>
+  <% @jobs.each do |job| %>
+      <li>
+        <%= link_to job.title, job_path(job) %>&nbsp;-&nbsp;<%= job.city %>
+      </li>
+  <% end %>
+  </ul>
+</div>

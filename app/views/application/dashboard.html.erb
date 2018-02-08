@@ -1,20 +1,31 @@
-<h2>Job Analytics</h1>
+<h3>Job Analytics</h3>
 
-<h4>Job Count by Level of Interest</h2>
-<p>Level of Interest : Number of Jobs </p>
-<% @job_count_by_interest.each do |level_of_interest, job_count| %>
-  <%= "#{level_of_interest} : #{job_count}" %><br>
-<% end %>
+<div class='analytics'>
 
-<h4>Top 3 Companies by Average Level of Interest</h4>
-<p>Company : Level of Interest </p>
-<% @top_3_by_avg_interest.each do |company, level_of_interest| %>
-  <%= "#{company.name} : #{level_of_interest.round}" %><br>
-<% end %>
+  <div>
+    <h4>Job Count by Level of Interest</h4>
+    <p>Level of Interest : Number of Jobs </p>
+    <div style="display:flex; justify-content:center;">
+      <% @job_count_by_interest.each do |level_of_interest, job_count| %>
+        <%= "#{level_of_interest} : #{job_count}" %><br>
+      <% end %>
+    </div>
+  </div>
 
-<h4>Job Count by Location</h4>
-<p>Location : Number of Jobs </p>
-<% @job_count_by_location.each do |location, job_count| %>
-  <%= link_to location, "/jobs?location=#{location}" %>
-  <%= ": #{job_count}" %><br>
-<% end %>
+  <div>
+    <h4>Top 3 Companies by Average Level of Interest</h4>
+    <p>Company : Level of Interest </p>
+      <% @top_3_by_avg_interest.each do |company, level_of_interest| %>
+        <%= link_to company.name, company_path(company) %>&nbsp;:&nbsp;<%= level_of_interest.round %><br>
+      <% end %>
+  </div>
+
+  <div>
+    <h4>Job Count by Location</h4>
+    <p>Location : Number of Jobs </p>
+    <% @job_count_by_location.each do |location, job_count| %>
+      <%= link_to location, "/jobs?location=#{location}" %>
+      <%= ": #{job_count}" %><br>
+    <% end %>
+  </div>
+</div>

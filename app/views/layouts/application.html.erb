@@ -2,15 +2,28 @@
 <html>
 <head>
   <title>JobTracker</title>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>Job Tracker</header>
+
+  <nav>
+    <div><%= link_to "Companies", companies_path %></div>
+    <div><%= link_to "Jobs", '/jobs?sort=location' %></div>
+    <div><%= link_to "Categories", categories_path %></div>
+    <div><%= link_to "Analytics", '/dashboard' %></div>
+  </nav>
+
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>
-<%= yield %>
 
+  <main>
+    <%= yield %>
+  </main>
 </body>
 </html>

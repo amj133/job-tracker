@@ -1,13 +1,19 @@
-All Jobs for <strong><%= @company.name %></strong>
+<div class='company jobs'>
+  <h3>All Jobs for <strong><%= @company.name %></strong></h3>
 
-<% @jobs.each do |job| %>
   <ul>
-    <li><%= link_to job.title, job_path(job) %> at <%= job.company.name %></li>
-    <p><%= link_to 'Edit', edit_job_path(job) %></p>
-    <p><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: "Really delete the job?"} %></p>
+    <% @jobs.each do |job| %>
+        <li>
+          <%= link_to job.title, job_path(job) %>:
+          &nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_job_path(job) %>
+          <%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: "Really delete the job?"} %>
+        </li>
+    <% end %>
   </ul>
-<% end %>
 
-<h3>Contacts:</h3>
-<%= render partial: 'companies/contact', collection: @company.contacts %>
-<%= render partial: 'contacts/form' %>
+  <h4><%= link_to "Create New Job with #{@company.name}", new_company_job_path(@company) %></h4>
+
+  <h3>Contacts</h3>
+  <%= render partial: 'companies/contact', collection: @company.contacts %>
+  <%= render partial: 'contacts/form' %>
+</div>

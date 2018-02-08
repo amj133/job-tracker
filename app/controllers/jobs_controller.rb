@@ -1,13 +1,13 @@
 require 'pry'
 
 class JobsController < ApplicationController
-  # before_action :set_job, only: [:show, :destroy, :edit, :update]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:new, :create]
 
   def index
-    # remove params company id?
     if params[:company_id].nil? && params[:sort] == "location"
       @jobs = Job.location_sort
-      render :index_by_location
+      render :index_sort_location
     elsif params[:company_id].nil? && params[:sort] == "interest"
       @jobs = Job.sort_by_interest
       render :index_by_interest
@@ -23,12 +23,10 @@ class JobsController < ApplicationController
 
   def new
     @categories = Category.all
-    @company = Company.find(params[:company_id])
-    @jobs = Job.new()
+    @jobs = Job.new
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @category = Category.find(params[:job][:category_id])
     @job = @company.jobs.new(job_params)
     if @job.save
@@ -41,20 +39,17 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
     @category = @job.category
     @comment = Comment.new
     @comment.job_id = @job.id
   end
 
   def edit
-    @job = Job.find(params[:id])
     @company = @job.company
     @categories = Category.all
   end
 
   def update
-    @job = Job.find(params[:id])
     @company = @job.company
     @job.update(job_params)
 
@@ -62,7 +57,6 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find(params[:id])
     @company = @job.company
     @job.destroy
 
@@ -70,6 +64,14 @@ class JobsController < ApplicationController
   end
 
   private
+
+  def set_job
+    @job = Job.find(params[:id])
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
 
   def job_params
     params.require(:job).permit(:title,

@@ -5,7 +5,7 @@ class Job < ApplicationRecord
   has_many :comments, dependent: :delete_all
 
   def self.location_sort
-    select(:title, :city)
+    select("jobs.*")
       .order(:city)
   end
 
