@@ -10,3 +10,5 @@ describe "User deletes existing company" do
     expect(page).to have_content("ESPN was successfully deleted!")
   end
 end
+
+# <%= "#{job.title} - #{job.city}" %>

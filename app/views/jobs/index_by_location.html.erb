@@ -3,7 +3,7 @@
 <ul>
 <% @jobs.each do |job| %>
     <li>
-      <%= "#{job.title} - #{job.city}" %>
+      <%= link_to job.title, job_path(job) %>&nbsp;-&nbsp;<%= job.city %>
     </li>
 <% end %>
 </ul>
