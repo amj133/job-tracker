@@ -5,6 +5,7 @@ describe "user sees analytics on dashboard" do
     it "displays a count of jobs by level of interest" do
       company_1 = Company.create!(name: "ESPN")
       company_2 = Company.create!(name: "ABC")
+      company_3 = Company.create!(name: "CBS")
       category = Category.create!(title: "blue")
       job_1 = Job.create!(title: "Designer",
                           level_of_interest: 80,
@@ -20,7 +21,7 @@ describe "user sees analytics on dashboard" do
                           level_of_interest: 60,
                           city: "Denver",
                           category_id: category.id,
-                          company_id: company_1.id)
+                          company_id: company_3.id)
       job_4 = Job.create!(title: "Communicator",
                           level_of_interest: 70,
                           city: "Denver",
@@ -72,12 +73,14 @@ describe "user sees analytics on dashboard" do
 
     it "displays count of jobs by location" do
       company_1 = Company.create!(name: "ESPN")
+      company_2 = Company.create!(name: "ABC")
+      company_3 = Company.create!(name: "NBC")
       category = Category.create!(title: "blue")
       job_1 = Job.create!(title: "Designer",
                           level_of_interest: 80,
                           city: "Richmond",
                           category_id: category.id,
-                          company_id: company_1.id)
+                          company_id: company_3.id)
       job_2 = Job.create!(title: "Manager",
                           level_of_interest: 50,
                           city: "Albany",
@@ -87,7 +90,7 @@ describe "user sees analytics on dashboard" do
                           level_of_interest: 60,
                           city: "Denver",
                           category_id: category.id,
-                          company_id: company_1.id)
+                          company_id: company_2.id)
       job_4 = Job.create!(title: "Communicator",
                           level_of_interest: 70,
                           city: "Denver",

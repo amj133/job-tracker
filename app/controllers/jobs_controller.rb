@@ -16,7 +16,6 @@ class JobsController < ApplicationController
       render :jobs_by_location
     else
       @company = Company.find(params[:company_id])
-      @jobs = @company.jobs
       @contact = @company.contacts.new
     end
   end
@@ -39,28 +38,24 @@ class JobsController < ApplicationController
   end
 
   def show
-    @category = @job.category
     @comment = Comment.new
     @comment.job_id = @job.id
   end
 
   def edit
-    @company = @job.company
     @categories = Category.all
   end
 
   def update
-    @company = @job.company
     @job.update(job_params)
 
-    redirect_to company_jobs_path(@company)
+    redirect_to company_jobs_path(@job.company)
   end
 
   def destroy
-    @company = @job.company
     @job.destroy
 
-    redirect_to company_jobs_path(@company)
+    redirect_to company_jobs_path(@job.company)
   end
 
   private

@@ -31,6 +31,8 @@ describe "user sees all jobs based on location" do
 
     it "user can see jobs specific to one location" do
       company_1 = Company.create!(name: "ESPN")
+      company_2 = Company.create!(name: "ABC")
+      company_3 = Company.create!(name: "NBC")
       category = Category.create!(title: "blue")
       job_1 = Job.create!(title: "Developer",
                                    level_of_interest: 60,
@@ -41,18 +43,18 @@ describe "user sees all jobs based on location" do
                                    level_of_interest: 70,
                                    city: "Denver",
                                    category_id: category.id,
-                                   company_id: company_1.id)
+                                   company_id: company_2.id)
       job_3 = Job.create!(title: "Designer",
                                    level_of_interest: 80,
                                    city: "Richmond",
                                    category_id: category.id,
-                                   company_id: company_1.id)
+                                   company_id: company_3.id)
 
       visit '/dashboard'
       click_on('Denver')
 
       expect(page).to have_content("Developer: ESPN")
-      expect(page).to have_content("Manager: ESPN")
+      expect(page).to have_content("Manager: ABC")
       expect(page).to_not have_content("Designer")
     end
   end

@@ -33,37 +33,7 @@ describe Company do
   end
 
   describe "class methods" do
-    it "#average_level_of_interest returns hash of each company's average" do
-      company_1 = Company.create!(name: "ESPN")
-      company_2 = Company.create!(name: "ABC")
-      category = Category.create!(title: "blue")
-      job_1 = Job.create!(title: "Designer",
-                          level_of_interest: 80,
-                          city: "Richmond",
-                          category_id: category.id,
-                          company_id: company_2.id)
-      job_2 = Job.create!(title: "Manager",
-                          level_of_interest: 70,
-                          city: "Albany",
-                          category_id: category.id,
-                          company_id: company_2.id)
-      job_3 = Job.create!(title: "Developer",
-                          level_of_interest: 60,
-                          city: "Denver",
-                          category_id: category.id,
-                          company_id: company_1.id)
-      job_4 = Job.create!(title: "Communicator",
-                          level_of_interest: 70,
-                          city: "Denver",
-                          category_id: category.id,
-                          company_id: company_1.id)
-
-      average_interest = Company.average_level_of_interest
-
-      expect(average_interest).to eq(company_1 => 65, company_2 => 75)
-    end
-
-    it "#top_3_by_avg_interest returns hash of top 3 companies" do
+    it "#top_3_by_avg_interest returns top 3 companies" do
       company_1 = Company.create!(name: "ESPN")
       company_2 = Company.create!(name: "ABC")
       company_3 = Company.create!(name: "CBS")
@@ -92,7 +62,7 @@ describe Company do
 
       top_3_companies = Company.top_3_by_avg_interest
 
-      expect(top_3_companies).to eq(company_1 => 80, company_4 => 70, company_3 => 60)
+      expect(top_3_companies).to eq([company_3, company_4, company_1])
     end
   end
 end
