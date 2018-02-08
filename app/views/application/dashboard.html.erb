@@ -15,8 +15,8 @@
   <div>
     <h4>Top 3 Companies by Average Level of Interest</h4>
     <p>Company : Level of Interest </p>
-      <% @top_3_by_avg_interest.each do |company, level_of_interest| %>
-        <%= link_to company.name, company_path(company) %>&nbsp;:&nbsp;<%= level_of_interest.round %><br>
+      <% @top_3_by_avg_interest.each do |company| %>
+        <%= link_to company.name, company_path(company) %>&nbsp;:&nbsp;<%= company.avg_interest.round %><br>
       <% end %>
   </div>
 
