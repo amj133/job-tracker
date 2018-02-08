@@ -11,8 +11,9 @@
     <% end %>
   </ul>
 
+  <h4><%= link_to "Create New Job with #{@company.name}", new_company_job_path(@company) %></h4>
 
-  <h3>Contacts:</h3>
+  <h3>Contacts</h3>
   <%= render partial: 'companies/contact', collection: @company.contacts %>
   <%= render partial: 'contacts/form' %>
 </div>

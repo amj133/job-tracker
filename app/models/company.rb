@@ -13,7 +13,7 @@ class Company < ApplicationRecord
   end
 
   def self.top_3_by_avg_interest
-    average_level_of_interest.sort_by do |company, avg_interest|
+    average_level_of_interest.compact.sort_by do |company, avg_interest|
       -(avg_interest)
     end.first(3).to_h
   end
