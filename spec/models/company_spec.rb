@@ -62,7 +62,7 @@ describe Company do
 
       top_3_companies = Company.top_3_by_avg_interest
 
-      expect(top_3_companies).to eq[company_3, company_4, company_1]
+      expect(top_3_companies).to eq([company_3, company_4, company_1])
     end
   end
 end
