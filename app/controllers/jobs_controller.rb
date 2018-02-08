@@ -7,7 +7,7 @@ class JobsController < ApplicationController
     # remove params company id?
     if params[:company_id].nil? && params[:sort] == "location"
       @jobs = Job.location_sort
-      render :index_by_location
+      render :index_sort_location
     elsif params[:company_id].nil? && params[:sort] == "interest"
       @jobs = Job.sort_by_interest
       render :index_by_interest

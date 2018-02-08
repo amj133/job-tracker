@@ -42,14 +42,55 @@ main {
   justify-content: center;
 }
 
-// footer {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   position: fixed;
-//   bottom: 0px;
-//   background-color: rgb(47,72,88);
-//   color: rgb(229,229,232);
-//   height: 30px;
-//   width: 100%;
-// }
+.company, .job, .category {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(172, 169, 179, 0.85);
+  width: 35%;
+  height: auto;
+  border: #4C4B63 5px solid;
+  overflow: auto;
+}
+
+.job {
+  border: #4C4B63 5px solid;
+  background-color: rgba(153, 151, 201, 0.85);
+  padding: 15px;
+}
+
+.category {
+  border: #5d7fbf 5px solid;
+  background-color: rgba(195, 195, 195, 0.8);
+  padding: 15px;
+}
+
+.analytics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(195, 175, 132, 0.85);
+  width: 90%;
+  height: auto;
+  border: #785f2f 5px solid;
+  overflow: auto;
+  padding: 15px;
+}
+
+.job-location {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(195, 175, 132, 0.85);
+  width: auto;
+  height: auto;
+  border: #785f2f 5px solid;
+  overflow: auto;
+  padding: 15px;
+}
+
+.analytics h4 {
+  text-decoration: underline;
+}

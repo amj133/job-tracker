@@ -1,0 +1,11 @@
+<div class='job'>
+  <h3>Jobs By Location</h3>
+
+  <ul>
+  <% @jobs.each do |job| %>
+      <li>
+        <%= link_to job.title, job_path(job) %>&nbsp;-&nbsp;<%= job.city %>
+      </li>
+  <% end %>
+  </ul>
+</div>

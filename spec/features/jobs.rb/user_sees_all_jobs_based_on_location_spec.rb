@@ -48,7 +48,7 @@ describe "user sees all jobs based on location" do
                                    category_id: category.id,
                                    company_id: company_1.id)
 
-        visit '/dashboard'
+      visit '/dashboard'
       click_on('Denver')
 
       expect(page).to have_content("Developer: ESPN")

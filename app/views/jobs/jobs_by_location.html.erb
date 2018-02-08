@@ -1,9 +1,12 @@
-<h3>Jobs in <%= @jobs.first.city %></h3>
+<div class='job-location'>
+  <h3>Jobs in <%= @jobs.first.city %></h3>
 
-<ul>
-  <% @jobs.each do |job| %>
-      <li>
-        <%= "#{job.title}: #{job.company.name}" %>
-      </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @jobs.each do |job| %>
+        <li>
+          <%= link_to job.title, job_path(job) %>:&nbsp;
+          <%= job.company.name %>
+        </li>
+    <% end %>
+  </ul>
+</div>
