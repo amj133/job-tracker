@@ -2,7 +2,7 @@
   <h3>All Jobs for <strong><%= @company.name %></strong></h3>
 
   <ul>
-    <% @jobs.each do |job| %>
+    <% @company.jobs.each do |job| %>
         <li>
           <%= link_to job.title, job_path(job) %>:
           &nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_job_path(job) %>
