@@ -4,9 +4,9 @@
   <% @categories.each do |category| %>
   <li class=category_<%= category.id %>>
     <%= link_to category.title, category_path(category) %>
+    <%= link_to "Delete", category_path(category), method: :delete, data: {confirm: "Really delete the category?"} %>
+    <%= link_to "Edit", edit_category_path(category) %>
   </li>
-  <p><%= link_to "Delete", category_path(category), method: :delete, data: {confirm: "Really delete the category?"} %></p>
-  <p><%= link_to "Edit", edit_category_path(category) %></p>
   <% end %>
 </ul>
 

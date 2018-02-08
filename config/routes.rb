@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: "companies#index"
+
   resources :companies, shallow: true do
     resources :jobs
     resources :contacts
